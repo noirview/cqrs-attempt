@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handlers;
+namespace App\Handlers\Commands;
 
 use App\Commands\Auth\RegisterUserCommand;
 use App\Events\Auth\UserRegisteredEvent;

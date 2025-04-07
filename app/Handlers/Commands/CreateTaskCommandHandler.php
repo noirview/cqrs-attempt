@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handlers;
+namespace App\Handlers\Commands;
 
 use App\Commands\Task\CreateTaskCommand;
 use App\Enums\TaskStatus;

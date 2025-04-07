@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Commands\Auth\LoginUserCommand;
 use App\Commands\Auth\RegisterUserCommand;
-use App\Handlers\LoginUserCommandHandler;
-use App\Handlers\RegisterUserCommandHandler;
+use App\Handlers\Commands\LoginUserCommandHandler;
+use App\Handlers\Commands\RegisterUserCommandHandler;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\JsonResponse;

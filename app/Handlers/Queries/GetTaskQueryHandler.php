@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handlers;
+namespace App\Handlers\Queries;
 
 use App\Models\Task;
 use App\Queries\Task\GetTaskQuery;
