@@ -12,6 +12,6 @@ class TaskUpdatedEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public function __construct(
-        Task $task
+        public Task $task
     ) {}
 }
