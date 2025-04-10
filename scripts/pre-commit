@@ -1,0 +1,16 @@
+#!/bin/bash
+
+   staged_files=$(git diff --cached --name-only -- '*.php')
+
+   if [ -z "$staged_files" ]; then
+       echo "No PHP files staged for commit."
+       exit 0
+   fi
+
+   vendor/bin/phpstan analyse $staged_files --memory-limit=2G
+   if [ $? -ne 0 ]; then
+       echo "Larastan found some issues. Commit aborted."
+       exit 1
+   fi
+
+   exit 0
