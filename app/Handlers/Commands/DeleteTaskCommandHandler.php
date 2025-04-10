@@ -12,7 +12,7 @@ class DeleteTaskCommandHandler
     {
         $task = Task::query()->findOrFail($command->taskId);
 
-        $result = $task->delete();
+        $result = (bool)$task->delete();
 
         event(new TaskDeletedEvent($task));
 

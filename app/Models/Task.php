@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property string $user_id
+ * @property string $status
+ */
 class Task extends Model
 {
     use HasUuids;
@@ -33,7 +37,7 @@ class Task extends Model
 
     /**
      * @property User $user
-     * @return BelongsTo<User>
+     * @return BelongsTo<User, covariant $this>
      */
     public function user(): BelongsTo
     {

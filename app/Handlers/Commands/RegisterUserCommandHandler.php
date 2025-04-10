@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterUserCommandHandler
 {
+    /**
+     * @param RegisterUserCommand $command
+     * @return array{User, string}
+     */
     public function handle(RegisterUserCommand $command): array
     {
         $user = User::query()->create([

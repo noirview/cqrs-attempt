@@ -10,6 +10,10 @@ use Illuminate\Validation\ValidationException;
 
 class LoginUserCommandHandler
 {
+    /**
+     * @param LoginUserCommand $command
+     * @return array{User, string}
+     */
     public function handle(LoginUserCommand $command): array
     {
         $user = User::query()->where([

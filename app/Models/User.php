@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     /**
      * @property Collection<Task> $tasks
-     * @return HasMany<Task>
+     * @return HasMany<Task, covariant $this>
      */
     public function tasks(): HasMany
     {

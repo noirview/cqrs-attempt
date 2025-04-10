@@ -6,6 +6,7 @@ use App\Commands\Task\CreateTaskCommand;
 use App\Commands\Task\DeleteTaskCommand;
 use App\Commands\Task\UpdateTaskCommand;
 use App\Handlers\Commands\CreateTaskCommandHandler;
+use App\Handlers\Commands\DeleteTaskCommandHandler;
 use App\Handlers\Commands\UpdateTaskCommandHandler;
 use App\Handlers\Queries\GetTaskQueryHandler;
 use App\Handlers\Queries\ListTaskQueryHandler;
@@ -22,21 +23,21 @@ class TaskController extends Controller
     public function index(IndexRequest $request, ListTaskQueryHandler $handler): JsonResponse
     {
         $indexTaskQuery = new ListTaskQuery(
-            auth()->id(),
+            (string)auth()->id(),
             $request->string('status'),
         );
 
         $tasks = $handler->handle($indexTaskQuery);
 
         return response()->json([
-            'tasks' => $tasks->toArray(),
+            'tasks' => $tasks->items(),
         ], Response::HTTP_OK);
     }
 
     public function store(StoreRequest $request, CreateTaskCommandHandler $handler): JsonResponse
     {
         $createTaskCommand = new CreateTaskCommand(
-            auth()->id(),
+            (string)auth()->id(),
             $request->string('title'),
             $request->string('description'),
         );
@@ -51,7 +52,7 @@ class TaskController extends Controller
     public function show(string $id, GetTaskQueryHandler $handler): JsonResponse
     {
         $getTaskQuery = new GetTaskQuery(
-            auth()->id(),
+            (string)auth()->id(),
             $id,
         );
 
@@ -65,7 +66,7 @@ class TaskController extends Controller
     public function update(UpdateRequest $request, string $id, UpdateTaskCommandHandler $handler): JsonResponse
     {
         $updateTaskCommand = new UpdateTaskCommand(
-            auth()->id(),
+            (string)auth()->id(),
             $id,
             $request->string('title'),
             $request->string('description'),
@@ -82,7 +83,7 @@ class TaskController extends Controller
     public function delete(string $id, DeleteTaskCommandHandler $handler): JsonResponse
     {
         $deleteTaskCommand = new DeleteTaskCommand(
-            auth()->id(),
+            (string)auth()->id(),
             $id,
         );
 
